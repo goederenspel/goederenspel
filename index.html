@@ -1,11 +1,18 @@
 <head>
+	<link rel="stylesheet" type="text/css" href="styling.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
 	<script src="jquery-3.2.1.js" type="text/javascript"></script>
 	<script src="a.js"></script>
 </head>
-<form name="gegevens" id="formo">
-	<input type="text" placeholder="Naam" name ="naam" id="naaminp"><br>
-	<input type="text" placeholder="Code" name ="code" id="codeinp">
-	<input type="submit" value="Submit">
-</form>
-Hallo
+<body>
+	<p id="error"></p>
+	<form name="gegevens" id="formo">
+		<div>
+			<input type="text" placeholder="Naam" name ="naam" id="naaminp" class="form-control col-lg-3"><br>
+			<input type="text" placeholder="Code" name ="code" id="codeinp" class="form-control col-sm-1">
+			<input type="submit" value="Submit" class="btn btn-primary">
+		</div>
+		<br>
+	</form>
+</body>

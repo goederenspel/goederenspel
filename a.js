@@ -17,15 +17,14 @@ $(document).ready(function() {
     console.log(code);
     if (code != "2769") {
       console.log("Wrong code");
-      //////////////////////////////// Verkeerde code
+      $("#error").text("Verkeerde code");
     }
     else {
       var ref = database.ref('users/' + naam);
       ref.once("value")
         .then(function(snapshot) {
           if (snapshot.exists()) {
-            //////////////////////////////////// Naam bestaat al
-            console.log("Naam al in gebruik")
+            $("#error").text("Gebruikersnaam bestaat al");
           }
           else {
             database.ref('users/' + naam).set({

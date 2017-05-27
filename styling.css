@@ -1,0 +1,20 @@
+body {
+	background-image: url("http://designwoop.com/uploads/2012/03/20_free_subtle_textures_floral_patterns.jpg");
+}
+p {
+	text-align: center;
+}
+#error {
+	margin-top: 20px;
+	color: red;
+	font-size: 15px;
+}
+#codeinp {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+div {
+	width: 30%;
+	margin: auto;
+}
