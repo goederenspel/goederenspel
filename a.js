@@ -33,7 +33,7 @@ $(document).ready(function() {
               geld: 0,
               moves: 2
             });
-            window.location.href = '/game?' + naam;
+            window.location.href = 'https://goederenspel.github.io/goederenspel/game?' + naam;
           }
         })
     }
