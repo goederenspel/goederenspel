@@ -44,7 +44,7 @@ $(document).ready(function() {
 			console.log("Geklikt: " + moves);
 			this.style.pointerEvents = 'none';
       this.style.visibility = 'hidden';
-			if (this.id=="1" || this.id=="3") {
+			if (this.id=="a" || this.id=="c") {
 				ref.update({geld: curgeld+4})
 			}
 			else {
