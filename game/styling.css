@@ -10,7 +10,8 @@ body {
 
 #wrap {
 	margin: auto;
-	width: 40%;
+	width: 100%;
+	max-width: 800px;
 }
 
 .knop1 {

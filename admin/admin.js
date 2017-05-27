@@ -55,6 +55,21 @@ $(document).ready(function() {
   				}
   			}
 		});
+      $("#reset").on("click", function() {
+        var code = $("#admincode").val();
+        if (code != "kaaskaas") {
+          console.log("Wrong Code");
+        }
+        else {
+          var dataX = data.val();
+          var names = Object.keys(dataX);
+          if (!done) {
+            done = 1;
+            database.ref('users').set({});
+            database.ref('klaar').set({});
+            }
+          }
+    });
   	};
   	function errData(err) {
   		console.log("Error reading users database");
