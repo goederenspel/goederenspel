@@ -1,0 +1,52 @@
+body {
+	background-image: url("http://designwoop.com/uploads/2012/03/20_free_subtle_textures_floral_patterns.jpg");
+}
+
+#geld {
+	text-align: center;
+	font-size: 23px;
+	font-family: 'arvo';
+}
+
+#wrap {
+	margin: auto;
+	width: 40%;
+}
+
+.knop1 {
+	cursor: pointer;
+	border-radius: 50px;
+	text-align: center;
+	margin: 30px;
+	height: 250px;
+	float: left;
+	width: 40%;
+	background: linear-gradient(to bottom right, red, rgb(255,100,0));
+}
+
+.knop2 {
+	cursor: pointer;
+	border-radius: 50px;
+	text-align: center;
+	margin: 30px;
+	height: 250px;
+	float: left;
+	width: 40%;
+	background: linear-gradient(to bottom right, rgb(0,200,255), rgb(0,255,255));
+}
+
+[id='1'],[id='3'] {
+	font-weight: bold;
+	font-family: 'arvo';
+	margin-top: 30%;
+	font-size: 30px;
+	color: rgb(0,0,0);
+}
+
+[id='2'], [id='4'] {
+	font-weight: bold;
+	font-family: 'arvo';
+	margin-top: 30%;
+	font-size: 30px;
+	color: rgb(255,164,0);
+}

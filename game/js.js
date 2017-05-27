@@ -18,25 +18,22 @@ $(document).ready(function() {
   	ref.on('value', gotData, errData);
 
   	function gotData(data) {
-  		console.log("Chello??");
   		var dataX = data.val();
   		moves = dataX.moves;
   		if (moves<1) {
   			disableButtons();
   		}
   		curgeld = dataX.geld;
+      $("#geld").text("Je hebt nu " + curgeld + " euro, " + naam);
   		binnen = true;
-  		console.log(moves);
   	}
   	function errData(err) {
   		console.log("Error:");
   		console.log(err);
   	}
-  	console.log(moves);
 
-	console.log(naam);
 
-	$(".actie").click(function() {
+	$(".knop").click(function() {
   			if (!binnen) {console.log("Too early");return;}
   			if (moves==1) {
   				database.ref('klaar/' + naam).set({});
@@ -44,9 +41,9 @@ $(document).ready(function() {
   			}
 			moves = moves-1;
 			ref.update({moves: moves});
-			console.log("Geklikt");
-			console.log(this);
-			this.disabled = true;
+			console.log("Geklikt: " + moves);
+			this.style.pointerEvents = 'none';
+      this.style.visibility = 'hidden';
 			if (this.id=="1" || this.id=="3") {
 				ref.update({geld: curgeld+4})
 			}
@@ -55,9 +52,9 @@ $(document).ready(function() {
 			}
 		});
 	function disableButtons() {
-		document.getElementById("1").disabled = true;
-		document.getElementById("2").disabled = true;
-		document.getElementById("3").disabled = true;
-		document.getElementById("4").disabled = true;
+    $("#a").css("visibility", "hidden");
+    $("#b").css("visibility", "hidden");
+    $("#c").css("visibility", "hidden");
+    $("#d").css("visibility", "hidden");
 	}
 });
