@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var moves = 0;
+  var curzelf = 0;
 	var curgeld = 0;
 	var binnen = false;
 	var naam = naam = window.location.search.substring(1);
@@ -30,10 +31,34 @@ $(document).ready(function() {
   	var ref = database.ref('users/'+ naam);
   	ref.on('value', gotData, errData);
 
+    ref.update({zelf : 0})
+
+
   	function gotData(data) {
   		var dataX = data.val();
   		moves = dataX.moves;
-      if (moves == 2 && ($("#a").css("visibility") == 'hidden' || $("#b").css("visibility") == 'hidden' || $("#c").css("visibility") == 'hidden' || $("#d").css("visibility") == 'hidden') && bezig == 1) {
+      curzelf = dataX.zelf;
+      if (dataX.aanklas != -1 && moves == 2 && ($("#a").css("visibility") == 'hidden' || $("#b").css("visibility") == 'hidden' || $("#c").css("visibility") == 'hidden' || $("#d").css("visibility") == 'hidden') && bezig == 1) {
+        database.ref('ronde').once('value').then(function(data2){
+          console.log(curzelf); console.log(dataX.zelf);
+          console.log(dataX);
+          $("#ronde").text("Einde van ronde " + (data2.val().ronde-1));
+          $("#ronde").fadeIn();
+          $("#geldzelf").text("Deze ronde heb je voor jezelf " + dataX.zelf + " euro verdiend");
+          setTimeout(function() {$("#geldzelf").fadeIn();}, 1000);
+          $("#geldklas").text("Deze ronde heeft iedereen " + dataX.aanklas + " euro verdiend");
+          setTimeout(function() {$("#geldklas").fadeIn();}, 2000);
+          $("#newtotal").text("Je hebt nu in totaal " + (dataX.geld) + " euro");
+          setTimeout(function() {$("#newtotal").fadeIn();}, 3000);
+          ref.update({aanklas : -1, zelf : 0});
+          setTimeout(function() {
+            $("#ronde").fadeOut("fast");
+            $("#geldzelf").fadeOut("fast");
+            $("#geldklas").fadeOut("fast");
+            $("#newtotal").fadeOut("fast");
+          }, 8000)
+
+        })
         enableButtons();
       }
   		if (moves<1) {
@@ -61,7 +86,8 @@ $(document).ready(function() {
       this.style.visibility = 'hidden';
       console.log("Id" + this.id);
 			if (this.id=="a" || this.id=="c") {
-				ref.update({geld: curgeld+5})
+				//ref.update({geld: curgeld+5})
+        ref.update({zelf: curzelf+5})
 			}
 			else {
 				database.ref('aanklas').push({naam : 1})

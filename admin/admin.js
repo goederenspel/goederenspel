@@ -64,9 +64,11 @@ $(document).ready(function() {
   							console.log(dataX[names[i]]);
   							var curgeld = dataX[names[i]].geld;
   							console.log(curgeld);
-  							database.ref('users/' + names[i]).update({moves : 2});
-  							database.ref('users/' + names[i]).update({geld : curgeld+aanklastotaal});
+                var nieuwgeld = curgeld+aanklastotaal+dataX[names[i]].zelf;
+                console.log(nieuwgeld);console.log(dataX[names[i]].zelf);console.log(curgeld);
+  							database.ref('users/' + names[i]).update({moves : 2, geld : nieuwgeld, aanklas : aanklastotaal});
   							database.ref('klaar/' + names[i]).update({"a":"b"});
+                console.log(dataX[names[i]]);
   						}
   						database.ref('aanklas').set({});
               database.ref('ronde').set({ronde: ronde+1});

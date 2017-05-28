@@ -30,7 +30,9 @@ $(document).ready(function() {
             database.ref('users/' + naam).set({
               naam: naam,
               geld: 0,
-              moves: 2
+              moves: 2,
+              zelf: 0,
+              aanklas: -1
             });
             window.location.href = 'https://goederenspel.github.io/goederenspel/game?' + naam;
           }
