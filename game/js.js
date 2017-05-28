@@ -14,13 +14,26 @@ $(document).ready(function() {
   	firebase.initializeApp(config);
 
   	var database = firebase.database();
+    var bezig = 0;
+
+    database.ref('bezig').on('value', function(data) {
+        console.log("Data: " + data.val());
+        if (data.val()===null) {
+          $("#wacht").text("Wacht totdat het spel begint")
+        }
+        else {
+          bezig = 1;
+          enableButtons();
+        }
+    });
+
   	var ref = database.ref('users/'+ naam);
   	ref.on('value', gotData, errData);
 
   	function gotData(data) {
   		var dataX = data.val();
   		moves = dataX.moves;
-      if (moves == 2 && ($("#a").css("visibility") == 'hidden' || $("#b").css("visibility") == 'hidden' || $("#c").css("visibility") == 'hidden' || $("#d").css("visibility") == 'hidden')) {
+      if (moves == 2 && ($("#a").css("visibility") == 'hidden' || $("#b").css("visibility") == 'hidden' || $("#c").css("visibility") == 'hidden' || $("#d").css("visibility") == 'hidden') && bezig == 1) {
         enableButtons();
       }
   		if (moves<1) {
@@ -45,7 +58,6 @@ $(document).ready(function() {
 			moves = moves-1;
 			ref.update({moves: moves});
 			console.log("Geklikt: " + moves);
-			this.style.pointerEvents = 'none';
       this.style.visibility = 'hidden';
       console.log("Id" + this.id);
 			if (this.id=="a" || this.id=="c") {

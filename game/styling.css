@@ -14,6 +14,10 @@ body {
 	max-width: 800px;
 }
 
+.knop {
+	visibility: hidden;
+}
+
 .knop1 {
 	cursor: pointer;
 	border-radius: 50px;
