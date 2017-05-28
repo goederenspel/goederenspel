@@ -2,7 +2,7 @@ body {
 	background-image: url("http://designwoop.com/uploads/2012/03/20_free_subtle_textures_floral_patterns.jpg");
 }
 
-#geld {
+#geld, #wacht {
 	text-align: center;
 	font-size: 23px;
 	font-family: 'arvo';
@@ -50,4 +50,15 @@ body {
 	margin-top: 30%;
 	font-size: 30px;
 	color: rgb(255,164,0);
+}
+
+#wacht {
+	color: red;
+	font-size: 20px;
+}
+
+#onder {
+	text-align: center;
+	font-size: 10px;
+	margin-top: 40%;
 }

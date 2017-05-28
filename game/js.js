@@ -20,6 +20,9 @@ $(document).ready(function() {
   	function gotData(data) {
   		var dataX = data.val();
   		moves = dataX.moves;
+      if (moves == 2 && ($("#a").css("visibility") == 'hidden' || $("#b").css("visibility") == 'hidden' || $("#c").css("visibility") == 'hidden' || $("#d").css("visibility") == 'hidden')) {
+        enableButtons();
+      }
   		if (moves<1) {
   			disableButtons();
   		}
@@ -46,7 +49,7 @@ $(document).ready(function() {
       this.style.visibility = 'hidden';
       console.log("Id" + this.id);
 			if (this.id=="a" || this.id=="c") {
-				ref.update({geld: curgeld+4})
+				ref.update({geld: curgeld+5})
 			}
 			else {
 				database.ref('aanklas').push({naam : 1})
@@ -57,5 +60,13 @@ $(document).ready(function() {
     $("#b").css("visibility", "hidden");
     $("#c").css("visibility", "hidden");
     $("#d").css("visibility", "hidden");
+    $("#wacht").text("Wacht totdat iedereen klaar is");
 	}
+  function enableButtons() {
+    $("#a").css("visibility", "visible");
+    $("#b").css("visibility", "visible");
+    $("#c").css("visibility", "visible");
+    $("#d").css("visibility", "visible");
+    $("#wacht").text("");
+  }
 });
