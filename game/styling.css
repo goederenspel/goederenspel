@@ -23,6 +23,8 @@ body {
 	float: left;
 	width: 40%;
 	background: linear-gradient(to bottom right, red, rgb(255,150,0));
+	box-shadow: 6px 6px 7px #888888;
+	border: 1px solid black;
 }
 
 .knop2 {
@@ -34,6 +36,8 @@ body {
 	float: left;
 	width: 40%;
 	background: linear-gradient(to bottom right, rgb(0,130,255), rgb(0,255,255));
+	box-shadow: 6px 6px 7px #888888;
+	border: 1px solid black;
 }
 
 [id='1'],[id='3'] {
