@@ -22,7 +22,8 @@ $(document).ready(function() {
 
   	var done = 0;
   	var ref = database.ref('users');
-    $("#newround").on("click", function() {
+    $("#read").on("click", function() {
+      $("#reload").text("Data binnen");
   	 ref.on('value', gotData, errData);
     });
 
@@ -30,7 +31,7 @@ $(document).ready(function() {
   		$("#newround").on("click", function() {
   			var code = $("#admincode").val();
   			if (code != "kaaskaas") {
-  				console.log("Wrong Code");
+  				$("#reload").text("Wrong code");
   			}
   			else {
   				var dataX = data.val();
@@ -69,6 +70,7 @@ $(document).ready(function() {
   						}
   						database.ref('aanklas').set({});
               database.ref('ronde').set({ronde: ronde+1});
+              $("#reload").text("Reload");
   					}
             }
   				}
@@ -77,7 +79,7 @@ $(document).ready(function() {
       $("#reset").on("click", function() {
         var code = $("#admincode").val();
         if (code != "kaaskaas") {
-          console.log("Wrong Code");
+          $("#reload").text("Wrong code");
         }
         else {
           console.log("Hey")
@@ -88,9 +90,22 @@ $(document).ready(function() {
             database.ref('users').set({});
             database.ref('klaar').set({});
             database.ref('ronde').set({ronde: 1});
+            database.ref('bezig').set({});
+            database.ref('aanklas').set({});
+            $("#reload").text("Reload");
             }
           }
     });
+      $("#begin").on("click", function() {
+          var code = $("#admincode").val();
+          if (code != "kaaskaas") {
+            $("#reload").text("Wrong code");
+          }
+          else {
+            database.ref("bezig").set({bezig: 1});
+            $("#reload").text("Reload");
+          }
+      });
   	};
   	function errData(err) {
   		console.log("Error reading users database");
